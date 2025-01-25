@@ -1,0 +1,27 @@
+{
+    "name": "alancaptcha/neos-login",
+    "description": "Neos AlanCaptcha Login",
+    "type": "neos-package",
+    "authors": [
+        {
+            "name": "web&co",
+            "email": "contact@webandco.com",
+            "homepage": "https://webandco.com/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "neos/neos": "*",
+        "alancaptcha/php": "0.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alan\\NeosLgoin\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Alan.NeosLogin",
+        }
+    }
+}
