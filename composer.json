@@ -21,7 +21,7 @@
     },
     "extra": {
         "neos": {
-            "package-key": "Alan.NeosLogin",
+            "package-key": "Alan.NeosLogin"
         }
     }
 }
