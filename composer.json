@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Alan\\NeosLgoin\\": "Classes/"
+            "Alan\\NeosLogin\\": "Classes/"
         }
     },
     "extra": {
