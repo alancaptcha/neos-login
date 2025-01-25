@@ -1,0 +1,29 @@
+prototype(Alan.NeosLogin:View.Login) < prototype(Neos.Neos:View.Login) {
+
+    @context {
+        alanLoginSettings = ${Configuration.setting('Alan.NeosLogin')}
+    }
+
+    prototype(Neos.Neos:Component.Login.Form) {
+        prototype(Neos.Fusion.Form:Form) {
+            renderer.content.@process.captcha = Neos.Fusion:Join {
+                form = ${value}
+                captcha = afx`
+                    <script src="https://api.alancaptcha.com/widget/1.0.0/widget.bundle.js"></script>
+                    <div
+                        class="alan-captcha"
+                        data-sitekey={alanLoginSettings.siteKey}
+                        data-monitortag={alanLoginSettings.monitorTag}
+                        data-unverifiedtext={alanLoginSettings.lang.unverifiedtext}
+                        data-verifiedtext={alanLoginSettings.lang.verifiedtext}
+                        data-retrytext={alanLoginSettings.lang.retrytext}
+                        data-workingtext={alanLoginSettings.lang.workingtext}
+                        data-starttext={alanLoginSettings.lang.starttext}
+                    ></div>
+                `
+            }
+
+            renderer.content.@process.captcha.@if.acitve = ${alanLoginSettings.active}
+        }
+    }
+}

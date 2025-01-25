@@ -1,0 +1,11 @@
+include: resource://Neos.Fusion/Private/Fusion/Root.fusion
+include: resource://Neos.Fusion.Form/Private/Fusion/Root.fusion
+include: resource://Neos.Neos/Private/Fusion/Backend/Root.fusion
+include: Views/*.fusion
+
+Neos.Neos.LoginController.index = Alan.NeosLogin:View.Login {
+    site = ${site}
+    styles = ${styles}
+    username = ${username}
+    flashMessages = ${flashMessages}
+}
