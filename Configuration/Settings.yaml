@@ -3,6 +3,9 @@ Neos:
     fusion:
       autoInclude:
         'Alan.NeosLogin': true
+  Fusion:
+    defaultContext:
+      Alan.AlanCaptchaHelper: 'Alan\NeosLogin\Eel\AlanCaptchaHelper'
 
 Alan:
   NeosLogin:

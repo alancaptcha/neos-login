@@ -2,28 +2,40 @@ prototype(Alan.NeosLogin:View.Login) < prototype(Neos.Neos:View.Login) {
 
     @context {
         alanLoginSettings = ${Configuration.setting('Alan.NeosLogin')}
+        alanSettingsValid = ${Alan.AlanCaptchaHelper.checkAlanLoginCredentialsValid()}
     }
 
     prototype(Neos.Neos:Component.Login.Form) {
         prototype(Neos.Fusion.Form:Form) {
-            renderer.content.@process.captcha = Neos.Fusion:Join {
-                form = ${value}
-                captcha = afx`
-                    <script src="https://api.alancaptcha.com/widget/1.0.0/widget.bundle.js"></script>
-                    <div
-                        class="alan-captcha"
-                        data-sitekey={alanLoginSettings.siteKey}
-                        data-monitortag={alanLoginSettings.monitorTag}
-                        data-unverifiedtext={alanLoginSettings.lang.unverifiedtext}
-                        data-verifiedtext={alanLoginSettings.lang.verifiedtext}
-                        data-retrytext={alanLoginSettings.lang.retrytext}
-                        data-workingtext={alanLoginSettings.lang.workingtext}
-                        data-starttext={alanLoginSettings.lang.starttext}
-                    ></div>
-                `
-            }
+            renderer.content.@process {
+                captcha = Neos.Fusion:Join {
+                    form = ${value}
+                    captcha = afx`
+                        <script src="https://api.alancaptcha.com/widget/1.0.0/widget.bundle.js"></script>
+                        <div
+                            class="alan-captcha"
+                            data-sitekey={alanLoginSettings.siteKey}
+                            data-monitortag={alanLoginSettings.monitorTag}
+                            data-unverifiedtext={alanLoginSettings.lang.unverifiedtext}
+                            data-verifiedtext={alanLoginSettings.lang.verifiedtext}
+                            data-retrytext={alanLoginSettings.lang.retrytext}
+                            data-workingtext={alanLoginSettings.lang.workingtext}
+                            data-starttext={alanLoginSettings.lang.starttext}
+                        ></div>
+                    `
+                }
+                captcha.@if.active = ${alanLoginSettings.active && alanSettingsValid}
 
-            renderer.content.@process.captcha.@if.acitve = ${alanLoginSettings.active}
+                captchaSettinsInvalid = Neos.Fusion:Join {
+                    form = ${value}
+                    error = afx`
+                        <div role="alert" style="background: #ff460d; margin-top: 0.5rem; padding: 0.5rem; color: white;">
+                            <strong>Alan.NeosLogin Settings invalid:</strong> Please check your Configuration.
+                        </div>
+                    `
+                }
+                captchaSettinsInvalid.@if.invalid = ${alanLoginSettings.active && !alanSettingsValid}
+            }
         }
     }
 }
