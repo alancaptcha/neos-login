@@ -7,6 +7,13 @@ Neos:
     defaultContext:
       Alan.AlanCaptchaHelper: 'Alan\NeosLogin\Eel\AlanCaptchaHelper'
 
+  Flow:
+    http:
+      middlewares:
+        'alanLogin':
+          position: 'after securityEntryPoint'
+          middleware: 'Alan\NeosLogin\Middleware\AlanLoginMiddleware'
+
 Alan:
   NeosLogin:
     active: true
