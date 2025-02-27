@@ -1,6 +1,7 @@
 {
     "name": "alancaptcha/neos-login",
     "description": "Neos AlanCaptcha Login",
+    "license": "MIT",
     "type": "neos-package",
     "authors": [
         {
