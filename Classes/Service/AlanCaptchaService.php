@@ -22,7 +22,7 @@ class AlanCaptchaService
     {
         $alanApi = new AlanApi();
 
-        $valid = false;
+        $valid = true;
         $error = "Validation Error";
 
         try {

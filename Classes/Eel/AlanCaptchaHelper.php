@@ -23,7 +23,10 @@ class AlanCaptchaHelper implements ProtectedContextAwareInterface
 
     public function checkAlanLoginCredentialsValid(): bool
     {
-        return $this->alanCaptchaService->validateCredentials($this->settings['apiKey'], $this->settings['siteKey']);
+        if (isset($this->settings['apiKey'], $this->settings['siteKey'])) {
+            return $this->alanCaptchaService->validateCredentials($this->settings['apiKey'], $this->settings['siteKey']);
+        }
+        return false;
     }
 
 

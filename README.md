@@ -20,7 +20,7 @@ Alan:
         active: true
         apiKey: 'API_KEY'
         siteKey: 'SITE_KEY'
-        monitorTag: 'MONITOR_TAG (optional)'
+        #monitorTag: 'MONITOR_TAG (optional - default general)'
         lang:
             unverifiedtext: 'Unverified'
             verifiedtext: 'Verified'

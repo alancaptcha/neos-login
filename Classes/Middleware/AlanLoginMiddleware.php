@@ -60,9 +60,13 @@ class AlanLoginMiddleware implements MiddlewareInterface
             } catch (\InvalidArgumentException $e) {
                 $captchaSuccess = false;
                 $captchaErrorCode = $e->getCode();
-            } catch (\JsonException $e) {
-                $captchaSuccess = false;
-                $captchaErrorCode = $e->getCode();
+            }
+            catch (\Exception $e) {
+                // in case of more rigorous error like network connection errors
+                // we assume the widget to be valid as this is more an internal server error
+                // then a captcha or user error and we dont want to prevent login in case of networking issues
+                $captchaSuccess = true;
+                $captchaErrorCode = 0;
             }
         }
 

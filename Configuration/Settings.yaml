@@ -17,13 +17,13 @@ Neos:
 Alan:
   NeosLogin:
     active: true
-    apiKey: 'API_KEY'
-    siteKey: 'SITE_KEY'
-    monitorTag: 'MONITOR_TAG (optional)'
-    lang:
-      unverifiedtext: 'Unverified'
-      verifiedtext: 'Verified'
-      retrytext: 'Retry'
-      workingtext: 'Working...'
-      starttext: 'Start'
-
+# The following api-/siteKey are mandatory for this package to function properly
+#    apiKey: 'API_KEY'
+#    siteKey: 'SITE_KEY'
+#    monitorTag: 'general'
+#    lang:
+#      unverifiedtext: 'Unverified'
+#      verifiedtext: 'Verified'
+#      retrytext: 'Retry'
+#      workingtext: 'Working...'
+#      starttext: 'Start'
